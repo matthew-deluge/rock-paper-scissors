@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <script>
+            //Create a function that results in a variable that randomly generates Rock, paper, or scissors
+            function computerRPS() {
+            let randNum = Math.floor(Math.random()*(4-1)+1);
+            if (randNum == 1) {
+                return "rock";
+            }
+            else if (randNum == 2) {
+                return "paper";
+            }
+            else if (randNum==3) {
+                return "scissors";
+            }
+            comsole.log(computerRPS());
+            }
+            //Get input of rock, paper, or scissors from the user, check that it is correct
+            function humanRPS() {
+                let readyToPlay = false
+                let playerChoice = ""
+                while (!readyToPlay) {
+                    playerChoice = prompt("Choose either rock, paper, or scissors");
+                    if (playerChoice.toLowerCase() != "rock" && playerChoice.toLowerCase() != "paper" && playerChoice.toLowerCase() != "scissors") {
+                        readyToPlay = false;
+                    }
+                    else {
+                        readyToPlay = true;
+                    }
+                if (readyToPlay)
+                {
+                   return playerChoice.toLowerCase();
+                }
+                }
+            }
+            //Compare the results (win=true/false) and put them into a variable
+            function playRound(humanChoice, computerChoice) {
+                let win = ""
+                while (humanChoice == computerChoice) {
+                    alert("it's a draw, try again")
+                    humanChoice=humanRPS();
+                }
+                if (humanChoice == "paper") {
+                    if (computerChoice == "rock") {
+                        win = true;
+                    }
+                    else if (computerChoice == "scissors") {
+                        win = false;
+                    }
+                }
+                else if (humanChoice == "rock") {
+                    if (computerChoice == "scissors") {
+                        win = true;
+                    }
+                    else if (computerChoice == "paper") {
+                        win = false;
+                    }
+                }
+                else if (humanChoice == "scissors") {
+                    if (computerChoice == "paper") {
+                        win = true;
+                    }
+                    else if (computerChoice == "rock") {
+                        win = false;
+                    }
+                
+            }
+            return win;
+            }
+            //Based on those results, add (or not) to a win counter)
+            let score = 0
+            for (let i = 0;i<=4;i++){
+                result = playRound(humanRPS(), computerRPS());
+                if (result){
+                    console.log("You won! You have won " + score + " out of " + (i +1) + " games.");
+                    score++;
+                }
+                else {
+                    console.log("You lost! You have won " + score + " out of " + (i+1) + " games.");
+                }
+            }
+            console.log("The final score was "+ score +" to " + (5-score) + ".");
+
+            //after each game, display if player wins or not
+            //When five games is up, display the results of the win counter
+        </script>
+    </body>
+</html>
