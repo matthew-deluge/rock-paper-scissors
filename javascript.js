@@ -85,7 +85,7 @@ function computerRPS() { //returns rock/paper/scissors randomly
     }
     if (compScore >=5) {
         alert(`You lose! Good Day Sir!`)
-        scores = 0;
+        score = 0;
         compScore = 0;
         ties = 0;
         scoreDiv.textContent = "Score = 0 to 0";
